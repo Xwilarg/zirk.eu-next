@@ -12,10 +12,12 @@
       Welcome on my website<br>
       I'm still working on this so this should be a work in progress for a bit <span class="material-symbols-outlined">plumbing</span>
     </div>
-    <div class="container is-fluid is-justify-content-center is-flex is-flex-wrap-wrap is-gap-5" id="target-gamejam" class="is-hidden">
-      {% for jam in jams.data %}
-        {% include 'gamejam.html.twig' %}
-      {% endfor %}
+    <div class="is-hidden container is-fluid" id="target-gamejam">
+      <div class="is-flex is-justify-content-center is-flex-wrap-wrap is-gap-5">
+        {% for jam in jams.data %}
+          {% include 'gamejam.html.twig' %}
+        {% endfor %}
+      </div>
     </div>
 </div>
 {% endblock %}
