@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install PHP dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Install JS dependencies
+      run: npm i
+    
+    - name: Build website
+      run: npm run build
+
+    - name: Deploy
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USER }}
+        port: 22
+        key: ${{ secrets.DEPLOY_SSHKEY }}
+        source: "css/,data/,img/,js/,templates/,index.php,vendor/,sketch/,favicon.ico"
+        target: ${{ secrets.DEPLOY_TARGET }}

@@ -32,26 +32,24 @@
         {% endfor %}
     </select>
 </div>
-<div class="select">
-    <select id="filter-duration">
-        <option value="">-- Select duration --</option>
+<div class="select is-multiple">
+    <select id="filter-duration" multiple>
         <option value="0-1">≤1h</option>
-        <option value="2-24">≤1 day</option>
-        <option value="25-48">2 days</option>
-        <option value="49-72">3 days</option>
-        <option value="73-168">1 week</option>
-        <option value="169-10000">&gt;1 week</option>
+        <option value="2-24" selected>≤1 day</option>
+        <option value="25-48" selected>2 days</option>
+        <option value="49-72" selected>3 days</option>
+        <option value="73-168" selected>1 week</option>
+        <option value="169-10000" selected>&gt;1 week</option>
     </select>
 </div>
-<div class="select">
-    <select id="filter-entries">
-        <option value="">-- Select entries count --</option>
-        <option value="-1">Unknown</option>
-        <option value="1-10">≤10</option>
-        <option value="11-100">≤100</option>
-        <option value="101-1000">≤1000</option>
-        <option value="1001-5000">≤5000</option>
-        <option value="5001-100000">&gt;5000</option>
+<div class="select is-multiple">
+    <select id="filter-entries" multiple>
+        <option value="-1" selected>Unknown</option>
+        <option value="1-10" selected>≤10</option>
+        <option value="11-100" selected>≤100</option>
+        <option value="101-1000" selected>≤1000</option>
+        <option value="1001-5000" selected>≤5000</option>
+        <option value="5001-100000" selected>&gt;5000</option>
     </select>
 </div>
 <div class="select">

@@ -3,72 +3,86 @@ export function setupGamejams()
     const jamsList = document.querySelectorAll(".gamejam");
     function filter() {
         for (let elem of jamsList) {
-            const game = elem;
             let l = document.getElementById("filter-location")
-            if (l.value !== "" && l.value !== game.dataset.location) {
-                game.classList.add("is-hidden");
+            if (l.value !== "" && l.value !== elem.dataset.location) {
+                elem.classList.add("is-hidden");
                 continue;
             }
+            let isOk;
             let d = document.getElementById("filter-duration")
-            if (d.value !== "") {
-                const s = d.value.split('-');
-                const duration = parseInt(game.dataset.duration);
-                if (duration < parseInt(s[0]) || duration > parseInt(s[1])) {
-                    game.classList.add("is-hidden");
+            let entries = Array.from(d.selectedOptions).map(x => x.value);
+            for (let e of entries) {
+                const s = e.split('-');
+                const duration = parseInt(elem.dataset.duration);
+                if (duration >= parseInt(s[0]) && duration <= parseInt(s[1])) {
+                    isOk = true;
+                    break;
+                }
+            }
+            if (!isOk) {
+                elem.classList.add("is-hidden");
+                continue;
+            }
+            let en = document.getElementById("filter-entries");
+            entries = Array.from(en.selectedOptions).map(x => x.value);
+            if (elem.dataset.entries == -1) {
+                if (!entries.includes("-1")) {
+                    elem.classList.add("is-hidden");
                     continue;
                 }
             }
-            let en = document.getElementById("filter-entries");
-            if (en.value !== "") {
-                if (en.value === "-1") {
-                    if (game.dataset.entries !== "-1") {
-                        game.classList.add("is-hidden");
-                        continue;
+            else
+            {
+                isOk = false;
+                for (let e of entries) {
+                    const s = e.split('-');
+                    const enGame = parseInt(elem.dataset.entries);
+                    if (enGame >= parseInt(s[0]) && enGame <= parseInt(s[1])) {
+                        isOk = true;
+                        break;
                     }
                 }
-                const s = en.value.split('-');
-                const entries = parseInt(game.dataset.entries);
-                if (entries < parseInt(s[0]) || entries > parseInt(s[1])) {
-                    game.classList.add("is-hidden");
+                if (!isOk) {
+                    elem.classList.add("is-hidden");
                     continue;
                 }
             }
             let y = document.getElementById("filter-year");
-            if (y.value !== "" && y.value !== game.dataset.year) {
-                game.classList.add("is-hidden");
+            if (y.value !== "" && y.value !== elem.dataset.year) {
+                elem.classList.add("is-hidden");
                 continue;
             }
             let e = document.getElementById("filter-engine");
-            if (e.value !== "" && e.value !== game.dataset.engine) {
-                game.classList.add("is-hidden");
+            if (e.value !== "" && e.value !== elem.dataset.engine) {
+                elem.classList.add("is-hidden");
                 continue;
             }
             let e2 = document.getElementById("filter-event");
-            if (e2.value !== "" && e2.value !== game.dataset.event) {
-                game.classList.add("is-hidden");
+            if (e2.value !== "" && e2.value !== elem.dataset.event) {
+                elem.classList.add("is-hidden");
                 continue;
             }
             let pe = document.getElementById("filter-people");
-            if (pe.value !== "" && !game.dataset.team.split(';').includes(pe.value)) {
-                game.classList.add("is-hidden");
+            if (pe.value !== "" && !elem.dataset.team.split(';').includes(pe.value)) {
+                elem.classList.add("is-hidden");
                 continue;
             }
             let alone = document.getElementById("filter-alone");
-            if (alone.checked && game.dataset.team !== "") {
-                game.classList.add("is-hidden");
+            if (alone.checked && elem.dataset.team !== "") {
+                elem.classList.add("is-hidden");
                 continue;
             }
             let ranked = document.getElementById("filter-ranked");
-            if (ranked.checked && game.dataset.score === "1") {
-                game.classList.add("is-hidden");
+            if (ranked.checked && elem.dataset.score === "1") {
+                elem.classList.add("is-hidden");
                 continue;
             }
             let nsfw = document.getElementById("filter-nsfw");
-            if (nsfw.checked && game.dataset.nsfw !== "1") {
-                game.classList.add("is-hidden");
+            if (nsfw.checked && elem.dataset.nsfw !== "1") {
+                elem.classList.add("is-hidden");
                 continue;
             }
-            game.classList.remove("is-hidden");
+            elem.classList.remove("is-hidden");
         }
     }
 
@@ -81,4 +95,5 @@ export function setupGamejams()
             filter();
         });
     }
+    filter();
 }
