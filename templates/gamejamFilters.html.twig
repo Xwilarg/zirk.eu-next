@@ -22,9 +22,8 @@
         {% endfor %}
     </select>
 </div>
-<div class="select">
-    <select id="filter-people">
-        <option value="">-- Select participant --</option>
+<div class="select is-multiple">
+    <select id="filter-people" multiple>
         {% for key, value in jams.people %}
             {% if not (key matches '/[A-F0-9]{32}/') %} {# This can probably be done better from index.php #}
                 <option value="{{ key }}">{{ key }} ({{ value }})</option>
@@ -32,9 +31,8 @@
         {% endfor %}
     </select>
 </div>
-<div class="select">
-    <select id="filter-duration">
-        <option value="">-- Select duration --</option>
+<div class="select is-multiple">
+    <select id="filter-duration" multiple>
         <option value="0-1">≤1h</option>
         <option value="2-24">≤1 day</option>
         <option value="25-48">2 days</option>
@@ -43,9 +41,8 @@
         <option value="169-10000">&gt;1 week</option>
     </select>
 </div>
-<div class="select">
-    <select id="filter-entries">
-        <option value="">-- Select entries count --</option>
+<div class="select is-multiple">
+    <select id="filter-entries" multiple>
         <option value="-1">Unknown</option>
         <option value="1-10">≤10</option>
         <option value="11-100">≤100</option>

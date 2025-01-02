@@ -49,7 +49,7 @@ export function setupGamejams()
                 continue;
             }
             let pe = document.getElementById("filter-people");
-            if (pe.value !== "" && !game.dataset.team.split(';').includes(pe.value)) {
+            if (pe.selectedOptions.length > 0 && (pe.selectedOptions.length > 1 || pe.value != "") && new Set(Array.from(pe.selectedOptions).map(x => x.value)).intersection(new Set(game.dataset.team.split(';'))).size != pe.selectedOptions.length) {
                 game.classList.add("is-hidden");
                 continue;
             }
