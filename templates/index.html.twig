@@ -1,22 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<div class="container notification mt-5">
-    Welcome on my website<br>
-    I'm still working on this so this should be a work in progress for a bit <span class="material-symbols-outlined">plumbing</span>
-</div>
-<div class="tabs is-centered is-medium is-toggle" id="main-nav">
+<div class="tabs is-centered is-medium is-toggle mt-5" id="main-nav">
   <ul>
     <li class="is-active"><a href="#about">About</a></li>
     <li><a href="#gamejam">Gamejams</a></li>
   </ul>
 </div>
 <div id="articles">
-    <div id="target-about">
-        Yadayada
+    <div class="container notification" id="target-about">
+      Welcome on my website<br>
+      I'm still working on this so this should be a work in progress for a bit <span class="material-symbols-outlined">plumbing</span>
     </div>
-    <div id="target-gamejam" class="is-hidden">
-      Jam
+    <div class="container is-fluid is-justify-content-center is-flex is-flex-wrap-wrap is-gap-5" id="target-gamejam" class="is-hidden">
+      {% for jam in jams.data %}
+        {% include 'gamejam.html.twig' %}
+      {% endfor %}
     </div>
 </div>
 {% endblock %}

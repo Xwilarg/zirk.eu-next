@@ -1,0 +1,35 @@
+<div class="card gamejam">
+    <div class="card-image">
+        <figure class="image">
+        {% if jam.image is null %}
+        <img loading="lazy" src="/img/gamejam/ComingSoon.png" alt="Coming soon image" />
+        {% else %}
+            <img loading="lazy" src="{{ jam.image }}" data-hover="{{ jam.gif }}"
+            alt="Thumbnail for {{ jam.event }}"
+            class="is-5by4 {% if not nsfw and jam.nsfw %} blur{% endif %} {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% elseif jam.imagePosOverrides == "down" %}image-pos-down{% elseif jam.imagePosOverrides == "up" %}image-pos-up{% endif %}"
+            />
+        {% endif %}
+        </figure>
+    </div>
+    <div class="card-content">
+        <div class="media">
+            <div class="media-content">
+                <p class="title is-4">{% if not jam.nsfw or nsfw %}{{jam.event}}{% if jam.eventCategory %} ({{ jam.eventCategory }}){% endif %}{% else %}&nbsp;{% endif %}</p>
+                <p>{% if jam.theme and not jam.nsfw %}Theme: {{ jam.theme }}{% else %}&nbsp;{% endif %}</p>
+                <p>Duration: {{jam.duration|round(0, 'floor')}} hour{% if jam.duration > 1 %}s{% endif %}</p>
+                <p>Date: {{jam.date}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="content pl-5 pb-5">
+        {% if jam.webgl is not null %}
+            <a class="button is-primary" target="_blank" href="{{ jam.webgl }}"><span class="material-symbols-outlined">play_arrow</span></a>
+        {% endif %}
+        {% if jam.website is not null %}
+            <a class="button" target="_blank" href="{{ jam.website }}"><span class="material-symbols-outlined">language</span></a>
+        {% endif %}
+        {% if jam.source is not null %}
+            <a class="button" target="_blank" href="{{ jam.source }}"><img class="image is-24x24" src="/img/github.svg" alt="GitHub logo"></a>
+        {% endif %}
+    </div>
+</div>

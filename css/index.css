@@ -1,0 +1,37 @@
+/* Hide NSFW content */
+.blur {
+    filter: blur(25px);
+    pointer-events: none;
+}
+
+.gif-pos-middle {
+    background-position: center;
+}
+
+.gif-pos-right {
+    background-position: right;
+}
+
+.image-pos-right {
+    object-position: right;
+}
+
+.image-pos-down {
+    object-position: bottom;
+}
+
+.image-pos-up {
+    object-position: top;
+}
+
+.gamejam {
+    width: 500px;
+}
+
+.gamejam img {
+    width: 500px;
+    height: calc(500px / 1.25);
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
