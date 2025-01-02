@@ -1,4 +1,8 @@
 /* Hide NSFW content */
+.gamejam .image {
+    overflow: hidden
+}
+
 .blur {
     filter: blur(25px);
     pointer-events: none;

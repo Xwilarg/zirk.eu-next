@@ -1,14 +1,14 @@
 <div class="card gamejam">
     <div class="card-image">
         <figure class="image">
-        {% if jam.image is null %}
-        <img loading="lazy" src="/img/gamejam/ComingSoon.png" alt="Coming soon image" />
-        {% else %}
-            <img loading="lazy" src="{{ jam.image }}" data-hover="{{ jam.gif }}"
-            alt="Thumbnail for {{ jam.event }}"
-            class="is-5by4 {% if not nsfw and jam.nsfw %} blur{% endif %} {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% elseif jam.imagePosOverrides == "down" %}image-pos-down{% elseif jam.imagePosOverrides == "up" %}image-pos-up{% endif %}"
-            />
-        {% endif %}
+            {% if jam.image is null %}
+            <img loading="lazy" src="/img/gamejam/ComingSoon.png" alt="Coming soon image" />
+            {% else %}
+                <img loading="lazy" src="{{ jam.image }}" data-hover="{{ jam.gif }}"
+                alt="Thumbnail for {{ jam.event }}"
+                class="is-5by4 {% if not nsfw and jam.nsfw %} blur{% endif %} {% if jam.gifPosOverrides == "right" %}gif-pos-right{% else %}gif-pos-middle{% endif %} {% if jam.imagePosOverrides == "right" %}image-pos-right{% elseif jam.imagePosOverrides == "down" %}image-pos-down{% elseif jam.imagePosOverrides == "up" %}image-pos-up{% endif %}"
+                />
+            {% endif %}
         </figure>
     </div>
     <div class="card-content">

@@ -13,7 +13,17 @@
       I'm still working on this so this should be a work in progress for a bit <span class="material-symbols-outlined">plumbing</span>
     </div>
     <div class="is-hidden container is-fluid" id="target-gamejam">
-      <div class="is-flex is-justify-content-center is-flex-wrap-wrap is-gap-5">
+      <div class="container control">
+        <div class="select">
+          <select>
+            <option value="">-- Select location --</option>
+            {% for key, value in jams.locations %}
+                <option value="{{ key }}">{{ key }} ({{ value }})</option>
+              {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="mt-5 is-flex is-justify-content-center is-flex-wrap-wrap is-gap-5">
         {% for jam in jams.data %}
           {% include 'gamejam.html.twig' %}
         {% endfor %}
