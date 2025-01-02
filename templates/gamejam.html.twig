@@ -7,8 +7,9 @@
     data-event="{{jam.shortEvent}}"
     data-entries="{{jam.entriesTotal}}"
     data-team="{{jam.team | join(';')}}"
-    data-score={{jam.score}}
-    data-missinggif={{jam.gif is null}}
+    data-score="{{jam.score}}"
+    data-missinggif="{{jam.gif is null}}"
+    data-nsfw="{{jam.nsfw == true}}"
 >
     <div class="card-image">
         <figure class="image">

@@ -62,3 +62,12 @@
         {% endfor %}
     </select>
 </div>
+<br>
+<input id="filter-alone" type="checkbox" class="switch is-rounded"/>
+<label for="filter-alone">Done alone</label>
+<input id="filter-ranked" type="checkbox" class="switch is-rounded"/>
+<label for="filter-ranked">Is ranked</label>
+{% if nsfw %}
+<input id="filter-nsfw" type="checkbox" class="switch is-rounded"/>
+<label for="filter-nsfw">Is NSFW</label>
+{% endif %}

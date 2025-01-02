@@ -53,12 +53,27 @@ export function setupGamejams()
                 game.classList.add("is-hidden");
                 continue;
             }
+            let alone = document.getElementById("filter-alone");
+            if (alone.checked && game.dataset.team !== "") {
+                game.classList.add("is-hidden");
+                continue;
+            }
+            let ranked = document.getElementById("filter-ranked");
+            if (ranked.checked && game.dataset.score === "1") {
+                game.classList.add("is-hidden");
+                continue;
+            }
+            let nsfw = document.getElementById("filter-nsfw");
+            if (nsfw.checked && game.dataset.nsfw !== "1") {
+                game.classList.add("is-hidden");
+                continue;
+            }
             game.classList.remove("is-hidden");
         }
     }
 
     let filters = [
-        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-people"
+        "filter-location", "filter-duration", "filter-year", "filter-engine", "filter-event", "filter-entries", "filter-people", "filter-alone", "filter-ranked", "filter-nsfw"
     ]
 
     for (let f of filters) {

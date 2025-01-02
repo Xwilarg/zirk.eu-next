@@ -120,5 +120,6 @@ echo $twig->render("index.html.twig", [
         "languages" => $languages,
         "people" => $people
     ],
-    "nsfw" => $nsfw
+    "nsfw" => $nsfw,
+    "analyticsKey" => json_decode(file_get_contents("data/json/analytics.json"), true)["key"]
 ]);
