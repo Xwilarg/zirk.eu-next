@@ -78,12 +78,14 @@ export function setupGamejams()
                 continue;
             }
             let nsfw = document.getElementById("filter-nsfw");
-            if (nsfw.checked && elem.dataset.nsfw !== "1") {
+            if (nsfw && nsfw.checked && elem.dataset.nsfw !== "1") {
                 elem.classList.add("is-hidden");
                 continue;
             }
             elem.classList.remove("is-hidden");
         }
+
+        document.getElementById("entriesFiltered").innerHTML = ` (${Array.from(jamsList).filter(x => !x.classList.contains("is-hidden")).length})`;
     }
 
     let filters = [
@@ -91,9 +93,12 @@ export function setupGamejams()
     ]
 
     for (let f of filters) {
-        document.getElementById(f).addEventListener("change", _ => {
-            filter();
-        });
+        const fDoc = document.getElementById(f);
+        if (fDoc) {
+            fDoc.addEventListener("change", _ => {
+                filter();
+            });
+        }
     }
     filter();
 }
